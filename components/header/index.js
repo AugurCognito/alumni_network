@@ -6,6 +6,7 @@ import MenuLogado from './menuLogado'
 import MenuNotLogado from './menuNotLogado'
 import Navigation from './navigation'
 import classNames from '../../utils/classsesNames'
+import Link from 'next/link'
 
 export default function Header() {
   return (
@@ -36,7 +37,7 @@ export default function Header() {
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4">
                     {Navigation.map((item) => (
-                      <a
+                      <Link
                         key={item.name}
                         href={item.href}
                         className={classNames(
@@ -48,7 +49,7 @@ export default function Header() {
                         aria-current={item.current ? 'page' : undefined}
                       >
                         {item.name}
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 </div>
@@ -64,7 +65,7 @@ export default function Header() {
           <Disclosure.Panel className="sm:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {Navigation.map((item) => (
-                <a
+                <Link
                   key={item.name}
                   href={item.href}
                   className={classNames(
@@ -76,7 +77,7 @@ export default function Header() {
                   aria-current={item.current ? 'page' : undefined}
                 >
                   {item.name}
-                </a>
+                </Link>
               ))}
             </div>
           </Disclosure.Panel>

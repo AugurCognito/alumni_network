@@ -16,7 +16,7 @@ const Index = () => {
               <p className="mt-3 text-base text-white sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
                 Search for job opportunities posted by AIT Alums.
                 <br/>
-                Get placed AITians, by AITians.
+                For AITians, by AITians.
               </p>
               <h1 className="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl">
                 <span className="block xl:inline">Welcome to the</span>{' '}
