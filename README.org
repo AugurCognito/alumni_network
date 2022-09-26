@@ -1,0 +1,9 @@
+* Alumnati
+This is a repository for the [[https://web.archive.org/web/20220924173346/https://deverse.aitoss.club/][De’Verse]] hosted by OSS club of AIT, Pune.
+
+** Features
+[x] Authentication
+[] Profile
+[] Posts
+[] Comments
+[] Chat
