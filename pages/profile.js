@@ -17,7 +17,7 @@ export default function profile() {
   }, [user])
 
   const fetchProfile = async () => {
-    let profile = await supabase.from("profiles").select("*").eq('id', user.id)
+    let profile = await supabase.from("profiles").select("*,branch(*)").eq('id', user.id)
     if (profile.error) {
       console.log('error', error)
       alert('Error:', error)
