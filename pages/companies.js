@@ -8,6 +8,7 @@ import Company_container from '../components/company_container';
 
 export default function companies() {
     const { user, error } = useUser()
+    
 
     const [companies, setCompanies] = useState(null)
     const [is_employer, set_employer_status] = useState(false)
@@ -22,7 +23,7 @@ export default function companies() {
     }, [user])
 
     const fetchCompanies = async () => {
-        let companies = await supabase.from("company").select("*")
+        let companies = await supabase.from("company").select("*,profiles(*)")
         if (companies.error) console.log('error', error)
         else setCompanies(companies.data)
         setLoading(false)
