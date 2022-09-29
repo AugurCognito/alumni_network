@@ -50,6 +50,7 @@ export default function Header() {
                       >
                         {item.name}
                       </Link>
+                      
                     ))}
                   </div>
                 </div>
@@ -65,6 +66,7 @@ export default function Header() {
           <Disclosure.Panel className="sm:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {Navigation.map((item) => (
+                <div>
                 <Link
                   key={item.name}
                   href={item.href}
@@ -78,6 +80,7 @@ export default function Header() {
                 >
                   {item.name}
                 </Link>
+                </div>
               ))}
             </div>
           </Disclosure.Panel>
