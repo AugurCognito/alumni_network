@@ -58,7 +58,7 @@ const Settings = () => {
         <>
             <Head />
             <Header />
-            <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28 h-screen">
+            <main className="mt-4 mx-auto max-w-7xl px-4 sm:mt-10 sm:px-6 md:mt-12 lg:mt-18 lg:px-8 xl:mt-18 pb-10">
 
                 <form className='p-3 border-2 border-info rounded-lg' onSubmit={updateCompany}>
                     Add your company
@@ -73,6 +73,7 @@ const Settings = () => {
                 </form>
 
                 <form className='p-3 rounded-lg border-2 border-info mt-5' onSubmit={uploadProfile} >
+                    Add Company Logo
                     <label class="block">
                         <span class="sr-only">Choose File</span>
                         <input name="profilePicture" type="file" class="m-2 block input-bordered input-primary w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
@@ -91,7 +92,7 @@ const Settings = () => {
 
                     <label className="label cursor-pointer">
                         <span className="label-text">Potential Employer?</span>
-                        <input type="checkbox" name="is_employer" className="toggle toggle-primary" onClick={toggle_is_employer} checked={is_employer} />
+                        <input type="checkbox" name="is_employer" className="toggle toggle-primary xl:mr-auto xl:ml-20 lg:mr-auto lg:ml-20 md:mr-auto md:ml-20" onClick={toggle_is_employer} checked={is_employer} />
                     </label>
                     <textarea className="textarea textarea-info resize rounded-md m-2" name="about" placeholder="Write your bio here"></textarea>
                     <br />
