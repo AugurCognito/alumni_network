@@ -63,7 +63,7 @@ export default function posts() {
                             <h3 className="font-bold text-lg">Create Post</h3>
                             <form className='p-3 ' onSubmit={createPost}>
                                 <br />
-                                <select className="select select-primary w-full max-w-xs" name="comapny">
+                                <select className="select select-primary w-full max-w-xs" name="company">
                                     <option disabled selected>Select you company?</option>
                                     {profile.data[0].company.map((company) => {
                                         return <>
@@ -86,11 +86,13 @@ export default function posts() {
                 </> : <></>
                 }
 
-                Companies
                 {isLoading ? <p>Loading...</p> :
 
-                    // <Post_container posts={companies} />
-                    <></>
+                    <>
+                        <Post_container posts={companies} />
+
+
+                    </>
                 }
             </main>
         </>
