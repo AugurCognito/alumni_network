@@ -3,9 +3,8 @@ const Post_container = (posts) => {
   console.log(">", posts)
   return (
     <div>
-      abc
       {posts.posts? posts.posts.map((post) => {
-        return <div>
+        return <div className="mt-3">
        <Post_card post={post} />
        </div>
       }):

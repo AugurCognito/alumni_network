@@ -24,7 +24,7 @@ export default function posts() {
     }, [user])
 
     const fetchPosts = async () => {
-        let posts = await supabase.from("post").select("*,company(*),comments(*,profiles(*))")
+        let posts = await supabase.from("post").select("*,company(*),comments(*,profiles(*)),profiles(*)")
         if (posts.error) console.log('error', error)
         else setCompanies(posts.data)
         setLoading(false)
@@ -90,8 +90,6 @@ export default function posts() {
 
                     <>
                         <Post_container posts={companies} />
-
-
                     </>
                 }
             </main>

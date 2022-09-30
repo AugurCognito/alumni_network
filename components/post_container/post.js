@@ -3,19 +3,25 @@ const Post_card = (post) => {
     return (
         <div>
 
-            {post.post ? <>{JSON.stringify(post.post)}</> :
+            {!post.post ? <>Loading!!!</> :
                 <>
                     <div className="post-container flex justify-center">
                         <div class=" rounded overflow-hidden border w-full mx-auto lg:w-6/12 md:w-6/12 bg-white md:mx-0 lg:mx-0">
                             <div class="w-full flex justify-between p-3">
                                 <div class="flex">
                                     <div class="rounded-full h-12 w-12 bg-gray-500 flex items-center justify-center overflow-hidden my-auto">
-                                        <img src="https://avatars0.githubusercontent.com/u/38799309?v=4" alt="profilepic" />
+                                        {!post.post.profiles.avatar ? <svg xmlns="http://www.w3.org/2000/svg" className="h-24 w-24" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                                        </svg> :
+                                            <img src={`https://hhwsjrpyfypmiacusavr.supabase.co/storage/v1/object/public/${post.post.profiles.avatar}`} height="200" width="200" alt="user profile image" className="rounded-full" />
+                                        }
                                     </div>
 
                                     <div className='flex flex-col'>
-                                        <span class="pt-1 ml-2 font-bold text-black">braydoncoyer</span>
-                                        <span className='ml-2 text-gray-700'>Berzogar Inc.</span>
+                                        <span class="pt-1 ml-2 font-bold text-black">
+                                            {post.post.profiles.first_name ? <>{[post.post.profiles.first_name, post.post.profiles.last_name].filter(Boolean).join(" ")}</> : <>{post.post.profiles.email}</>}
+                                        </span>
+                                        <span className='ml-2 text-gray-700'>{post.post.company.name}</span>
                                     </div>
                                 </div>
 
@@ -24,21 +30,31 @@ const Post_card = (post) => {
                             <div class="px-3 pb-2">
                                 <div class="pt-2 flex flex-col">
                                     <span>
-                                        Fri Sept 30 2022
+                                        {(new Date(post.post.created_at).toLocaleString())}
                                     </span>
                                     <i class="far fa-heart cursor-pointer"></i>
-                                    <span class="text-sm text-gray-600 font-medium">12 likes</span>
+                                    <span class="text-sm text-gray-600 font-medium">{post.post.likes} likes</span>
                                 </div>
                                 <div class="pt-1">
                                     <div class="mb-2 text-sm text-gray-700">
-                                        <span class="font-medium mr-2 text-black">braydoncoyer</span> Lord of the Rings is my favorite film-series. One day I'll make my way to New Zealand to visit the Hobbiton set!
+                                        <span class="font-bold mr-2 text-black">
+                                            {
+                                                post.post.profiles.first_name ? <>{[post.post.profiles.first_name, post.post.profiles.last_name].filter(Boolean).join(" ")}</> : <>{post.post.profiles.email}</>
+                                            }
+                                        </span> <span className="whitespace-pre-wrap">{post.post.content}</span>
                                     </div>
                                 </div>
-                                <div class="text-sm mb-2 text-black cursor-pointer font-medium">View all 14 comments</div>
+                                {/* <div class="text-sm mb-2 text-black cursor-pointer font-medium">View all 14 comments</div> */}
+                                <div>Comments</div>
                                 <div class="mb-2">
-                                    <div class="mb-2 text-sm text-gray-700">
-                                        <span class="font-medium mr-2 text-black">razzle_dazzle</span> Dude! How cool! I went to New Zealand last summer and had a blast taking the tour! So much to see! Make sure you bring a good camera when you go!
-                                    </div>
+                                    {post.post.comments ? post.post.comments.map((comment) => (
+                                        <div class="mb-2 text-sm text-gray-700">
+                                            {console.log("this")}
+                                            <span class="font-semibold mr-2 text-black">{comment.profiles.first_name ? <>{[comment.profiles.first_name, comment.profiles.last_name].filter(Boolean).join(" ")}</> : <>{comment.profiles.email}</>}</span> {comment.content}
+                                            <div className="font-light">{(new Date(comment.created_at).toLocaleString())}
+                                            </div>
+                                        </div>
+                                    )) : <div className="text-center">No Comments Yet!</div>}
                                 </div>
                             </div>
                         </div>

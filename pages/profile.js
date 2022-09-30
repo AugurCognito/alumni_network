@@ -45,12 +45,13 @@ export default function profile() {
                 <div className="p-8 bg-white shadow mt-18 rounded-lg lg:w-3/5">
                   <div className="grid grid-cols-1 md:grid-cols-3">
                     <div className="relative">
-                      <div className="w-48 h-48 bg-indigo-100 mx-auto rounded-full shadow-2xl absolute inset-x-0 top-0 -mt-24 flex items-center justify-center text-indigo-500">{usrprofile[0].avatar ?
-                        <img src={`https://hhwsjrpyfypmiacusavr.supabase.co/storage/v1/object/public/${usrprofile[0].avatar}`} height="200" width="200" alt="user profile image" className="rounded-full" />
-                        :
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-24 w-24" viewBox="0 0 20 20" fill="currentColor">
-                          <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                        </svg>}
+                      <div className="w-48 h-48 bg-indigo-100 mx-auto rounded-full shadow-2xl absolute inset-x-0 top-0 -mt-24 flex items-center justify-center text-indigo-500">
+                        {usrprofile[0].avatar ?
+                          <img src={`https://hhwsjrpyfypmiacusavr.supabase.co/storage/v1/object/public/${usrprofile[0].avatar}`} height="200" width="200" alt="user profile image" className="rounded-full" />
+                          :
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-24 w-24" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                          </svg>}
                       </div>
                     </div>
 
