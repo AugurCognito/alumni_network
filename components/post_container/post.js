@@ -1,5 +1,7 @@
+import { data } from "autoprefixer";
 import Link from "next/link"
 import { useUser } from "../../hooks/authUser";
+import profile from "../../pages/profile";
 import { supabase } from "../../utils/initSupabase";
 
 const Post_card = (post) => {
@@ -25,6 +27,11 @@ const Post_card = (post) => {
         if (!comment.error) {
             alert("Commented, refresh to see changes")
         }
+    }
+    async function likePost() {
+        data = await supabase
+            .rpc('increment_like', { row_id: post.post.id })
+        alert("Liked the post")
     }
     return (
         <div>
@@ -52,7 +59,7 @@ const Post_card = (post) => {
                                 </div>
 
                             </div>
-                            <img className="w-full bg-cover" src="https://3.bp.blogspot.com/-Chu20FDi9Ek/WoOD-ehQ29I/AAAAAAAAK7U/mc4CAiTYOY8VzOFzBKdR52aLRiyjqu0MwCLcBGAs/s1600/DSC04596%2B%25282%2529.JPG" alt="Post Media" />
+                            {post.post.media ? <img className="w-full bg-cover" src={`https://hhwsjrpyfypmiacusavr.supabase.co/storage/v1/object/public/${post.post.media}`} alt="Post Media" /> : <div className="text-center">No media for this post</div>}
                             <div class="px-3 pb-2">
                                 <div className="text-right mt-0.5">
                                     <span className="m-4">
@@ -63,7 +70,9 @@ const Post_card = (post) => {
                                     </button>
                                 </div>
                                 <div class="pt-2 flex flex-col">
-                                    <i class="far fa-heart cursor-pointer"></i>
+                                    <button className="btn" onClick={()=>(likePost())}>
+                                        <i className="far fa-heart cursor-pointer">Heart</i>
+                                    </button>
                                     <span class="text-sm text-gray-600 font-medium">{post.post.likes} likes</span>
                                 </div>
                                 <div class="pt-1">
@@ -94,7 +103,7 @@ const Post_card = (post) => {
                                     )) : <div className="text-center">No Comments Yet!</div>}
                                     {user ? <form onSubmit={(e) => (submitComment(e, user))}>
                                         Add your comment: <textarea name="content" className="textarea block"></textarea><button className="btn mt-1">Submit</button>
-                                    </form> : <>Login to comment</>}
+                                    </form> : <Link href="/auth">Login to comment</Link>}
 
                                 </div>
                             </div>
