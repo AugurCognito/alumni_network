@@ -35,7 +35,7 @@ const User_profile = () => {
                 {messages?.data.map(message => {
                     console.log(message)
                     return <>
-                        {message.profiles.email}<br />{message.content}<br />{(new Date(message.created_at).toLocaleString())}
+                        <span className="font-bold">{message.profiles.email}</span><br />{message.content}<br /><span className="font-light">{(new Date(message.created_at).toLocaleString())}</span>
                         <hr/>
                     </>
                 }
