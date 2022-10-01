@@ -29,11 +29,13 @@ const User_profile = () => {
         <Header />
         {post ?
 
-            <>{post.data ?
-                < Post_card post={post.data[0]} />
-                :
-                <>{post.error.message}</>}
-            </>
+            <div className="px-3 sm:px-2 mt-20 md:mx-10">
+                <>{post.data ?
+                    < Post_card post={post.data[0]} />
+                    :
+                    <>{post.error.message}</>}
+                </>
+            </div>
             :
             <>Loading...</>
         }

@@ -70,7 +70,7 @@ const Post_card = (post) => {
                                     </button>
                                 </div>
                                 <div class="pt-2 flex flex-col">
-                                    <button className="btn" onClick={()=>(likePost())}>
+                                    <button className="btn w-10 h-10" onClick={()=>(likePost())}>
                                         <i className="far fa-heart cursor-pointer">Heart</i>
                                     </button>
                                     <span class="text-sm text-gray-600 font-medium">{post.post.likes} likes</span>
@@ -102,7 +102,7 @@ const Post_card = (post) => {
                                         </div>
                                     )) : <div className="text-center">No Comments Yet!</div>}
                                     {user ? <form onSubmit={(e) => (submitComment(e, user))}>
-                                        Add your comment: <textarea name="content" className="textarea block"></textarea><button className="btn mt-1">Submit</button>
+                                        Add your comment: <textarea name="content" className="textarea block"></textarea><button className="btn mt-1 ">Submit</button>
                                     </form> : <Link href="/auth">Login to comment</Link>}
 
                                 </div>
