@@ -21,7 +21,12 @@ const User_profile = () => {
         const message = await supabase.from("message").select("*,profiles(*)").eq("room", id)
         setMessages(message)
     }
-
+    async function sendMessage(e) {
+        e.preventDefault()
+        const message = await supabase.from("message").insert([{sender:user.id,content: e.target.chat.value,room:id}])
+        fetchMessages()
+        alert("Message Sent")
+    }
     return <>
         <Head />
         <Header />
@@ -30,11 +35,16 @@ const User_profile = () => {
                 {messages?.data.map(message => {
                     console.log(message)
                     return <>
-                        {message.profiles.email}<br/>{message.content}<br/>{(new Date(message.created_at).toLocaleString())}
+                        {message.profiles.email}<br />{message.content}<br />{(new Date(message.created_at).toLocaleString())}
+                        <hr/>
                     </>
                 }
                 )
                 }
+                <form onSubmit={e=>(sendMessage(e))}>
+                    <textarea name="chat" className="textarea textarea-info" placeholder="Chat"></textarea>
+                    <button className="btn">Submit</button>
+                </form>
             </>
             :
             <>Loading...</>
