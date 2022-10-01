@@ -4,8 +4,10 @@ import { supabase } from "../../utils/initSupabase";
 
 import Header from '../../components/header'
 import Head from '../../components/head'
+import { useUser } from "../../hooks/authUser";
 
 const User_profile = () => {
+    const { user, error } = useUser()
     const router = useRouter()
     const { uid } = router.query
 
@@ -26,6 +28,14 @@ const User_profile = () => {
         }
         setProfile(profile.data)
         setLoading(false)
+    }
+    const createRoom = async (e) => {
+        e.preventDefault()
+        let room = await supabase.from("chat").insert(
+            [{ sender: user.id, receiver: usrprofile[0].id }]
+            , { upsert: true }
+        )
+        router.push("/chat")
     }
     return <>
         <Head />
@@ -65,12 +75,19 @@ const User_profile = () => {
                                 <div className="mt-12 flex flex-col justify-center">
                                     <p className="text-gray-600 text-center font-light lg:px-16">{usrprofile[0].about}</p>
                                 </div>
-
+                                <div className="text-center">
+                                    {user ? <>
+                                        {
+                                            user.id != usrprofile[0].id ? <button className="btn" onClick={e=>(createRoom(e))}>Start Messaging</button> : <></>
+                                        }</>
+                                        : <>Login to send Messages</>}
+                                </div>
                             </div>
                         </div>
                     </> : <></>}
                 </>
             }
+
         </main>
     </>
 }
