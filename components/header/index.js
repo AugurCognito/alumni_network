@@ -46,18 +46,15 @@ export default function Header() {
                             : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                           'px-3 py-2 rounded-md text-sm font-medium'
                         )}
-                        aria-current={item.current ? 'page' : undefined}
-                      >
+                        aria-current={item.current ? 'page' : undefined}>
                         {item.name}
                       </Link>
-                      
                     ))}
                   </div>
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 {/** notifications */}
-
                 {AuthUser() ? <MenuLogado /> : <MenuNotLogado />}
               </div>
             </div>
@@ -67,19 +64,19 @@ export default function Header() {
             <div className="px-2 pt-2 pb-3 space-y-1">
               {Navigation.map((item) => (
                 <div>
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className={classNames(
-                    item.current
-                      ? 'bg-gray-900 text-white'
-                      : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                    'block px-3 py-2 rounded-md text-base font-medium'
-                  )}
-                  aria-current={item.current ? 'page' : undefined}
-                >
-                  {item.name}
-                </Link>
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className={classNames(
+                      item.current
+                        ? 'bg-gray-900 text-white'
+                        : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                      'block px-3 py-2 rounded-md text-base font-medium'
+                    )}
+                    aria-current={item.current ? 'page' : undefined}
+                  >
+                    {item.name}
+                  </Link>
                 </div>
               ))}
             </div>

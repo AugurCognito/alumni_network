@@ -1,9 +1,11 @@
 * Alumnati
 This is a repository for the [[https://web.archive.org/web/20220924173346/https://deverse.aitoss.club/][De’Verse]] hosted by OSS club of AIT, Pune.
-
 ** Features
 - [x] Authentication
-- [] Profile
-- [] Posts
-- [] Comments
-- [] Chat
+    - [x] Added email security using supabase policy(disabled due to only having one college account)
+- [x] Profile
+- [x] Posts
+    - [x] Share post
+    - [x] Likes(delibrate choice to not restrict number of likes a person can give because of low number of users(auth for each one required) in this build)
+- [x] Comments
+- [ ] Chat

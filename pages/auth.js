@@ -22,7 +22,7 @@ const AuthPage = () => {
             </div>
             <Auth
               supabaseClient={supabase}
-              view={'sign_up'}
+              view={'sign_in'}
               socialLayout="horizontal"
               socialButtonSize="xlarge"
             />
