@@ -10,7 +10,6 @@ const Settings = () => {
 
     const [is_employer, set_is_employer] = useState(false)
     const [uploading, setUploading] = useState(false)
-
     const user = useUser().user
     const updateCompany = async event => {
         event.preventDefault()
@@ -58,7 +57,7 @@ const Settings = () => {
         <>
             <Head />
             <Header />
-            <main className="mt-4 mx-auto max-w-7xl px-4 sm:mt-10 sm:px-6 md:mt-12 lg:mt-18 lg:px-8 xl:mt-18 pb-10">
+            <main className="mt-4 mx-auto max-w-7xl px-4 sm:mt-10 sm:px-6 md:mt-12 lg:mt-18 lg:px-8 xl:mt-18 pb-10 ">
 
                 <form className='p-3 border-2 border-info rounded-lg' onSubmit={updateCompany}>
                     Add your company
