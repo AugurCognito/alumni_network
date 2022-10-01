@@ -1,6 +1,5 @@
 import Post_card from "./post"
 const Post_container = (posts) => {
-  console.log(">", posts)
   return (
     <div>
       {posts.posts? posts.posts.map((post) => {

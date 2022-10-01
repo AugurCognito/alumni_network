@@ -41,10 +41,22 @@ export default function posts() {
     }
     const createPost = async event => {
         event.preventDefault()
-        console.log(event.target)
-        console.log(profile)
+        let newPost = await supabase.from('post')
+            .insert([
+                { content: event.target.content.value, company_id: event.target.company.value, Position: event.target.position.value, created_by: user.id }])
+        console.log(newPost)
+            if (newPost.error)
+                alert("Error", newPost.error.message)
+            else {
+                let postFile = event.target.media.files[0]
+                const { data, error } = await supabase.storage
+                    .from('posts')
+                    .upload(`${newPost.data[0].id}/${postFile.name}`, postFile)
+                console.log(data,newPost.data[0])
+                let data2 = await supabase.from("post").update({media : data.Key}).eq('id',newPost.data[0].id)
+                console.log(data2)
+            }
     }
-
     return (
         <>
             <Head />
@@ -71,12 +83,13 @@ export default function posts() {
                                         </>
                                     })}
                                 </select>
+                                <input type="text" name='position' placeholder="Position" class="input input-bordered input-primary w-full max-w-xs m-2" />
                                 <label class="block">
                                     <span class="sr-only">Choose File</span>
                                     Media:<input name="media" type="file" class="m-2 block input-bordered input-primary w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
                                 </label>
                                 <br />
-                                <textarea className="textarea textarea-info w-3/4 resize rounded-md m-1" name="about" placeholder="Content of Your Post"></textarea>
+                                <textarea className="textarea textarea-info w-3/4 resize rounded-md m-1" name="content" placeholder="Content of Your Post"></textarea>
                                 <br />
                                 <button type="submit" className='btn btn-primary m-1'>Create</button>
                             </form>
@@ -86,7 +99,7 @@ export default function posts() {
                 </> : <></>
                 }
 
-                {isLoading ? <p>Loading...</p> :
+                {isLoading ? <p className='text-center'>Loading...</p> :
 
                     <>
                         <Post_container posts={companies} />
