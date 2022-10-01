@@ -44,11 +44,11 @@ export default function companies() {
 
             <Header />
 
-            <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28 h-screen">
+            <main className="mt-4 mx-auto max-w-7xl px-4 sm:mt-10 sm:px-6 md:mt-10 lg:mt-16 lg:px-8 xl:mt-20 h-full">
             
                 {/* For uploadfile pop-up */}
                 {is_employer ? <>
-                    <label htmlFor="my-modal" className="btn modal-button">open modal</label>
+                    {/* <label htmlFor="my-modal" className="btn modal-button">open modal</label>
                     <input type="checkbox" id="my-modal" className="modal-toggle" />
                     <div className="modal">
                         <div className="modal-box">
@@ -58,10 +58,9 @@ export default function companies() {
                                 <label htmlFor="my-modal" className="btn">Create</label>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </> : <></>}
 
-                Companies
                 {isLoading ? <p>Loading...</p> :
                 
                 <Company_container companies={companies} />
